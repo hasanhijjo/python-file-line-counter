@@ -1,5 +1,7 @@
 import os
+import sys
 
+sys.path.append(os.getcwd())
 from file_counter import file_counter
 
 def run_tests():
