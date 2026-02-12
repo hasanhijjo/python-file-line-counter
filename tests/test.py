@@ -1,26 +1,23 @@
 import os
+
 from file_counter import file_counter
 
 def run_tests():
 
-    file_path = "testdata/file_with_5_lines.txt"
-
-    if os.path.exists(file_path):
-        print("Test 0 (File Exists): PASSED")
+    if os.path.exists("testdata/file_with_5_lines.txt"):
+        print("Test 1 (File Exists): PASSED")
     else:
-        print("Test 0: FAILED - File does not exist")
+        print("Test 1: FAILED - File does not exist")
         return
 
-    result1 = file_counter.count_lines(file_path)
-    assert result1 == 5
-    print("Test 1 (Exact Line Count): PASSED")
+    res2 = file_counter.count_lines("testdata/empty_file.txt")
+    assert res2 == 0
+    print(f"Test 2 (Empty File): PASSED")
 
-    result2 = file_counter.count_lines(file_path)
-    assert result2 > 0
-    print("Test 2 (File Not Empty): PASSED")
-
-    print("\nAll tests passed successfully!")
+    
+    res3 = file_counter.count_lines("testdata/one_line_file.txt")
+    assert res3 == 1
+    print(f"Test 3 (1 Line): PASSED")
 
 if __name__ == "__main__":
     run_tests()
-
